@@ -1,6 +1,6 @@
 ## İçindekiler
-- [Nedir?]
-- [Başla] (#başla)
+- [Nedir?](#Nedir?)
+- [Başla](#Başla)
 
 ## Nedir?
 Covid 19 vaka sayısı , iyileşen sayısı, ölüm sayısı gibi verilerin ülke bazında grafikler ile gösterildiği bir proje. 
