@@ -3,18 +3,32 @@ import { Cards, Chart, CountryPicker} from "./components";
 import "./app.module.css";
 import { fetchData } from "./api";
 
+const coronaImage = "https://i.ibb.co/7QpKsCX/image.png";
+
 class App extends Component {
+  state = {
+    data: {},
+    country: ""
+  }
+
   async componentDidMount() {
-    const data = await fetchData();
-    console.log(data)
+    const fetchedData = await fetchData();
+    this.setState({ data: fetchedData });
+  }
+
+  handleCountryChange = async (country) => {    
+    const fetchedData = await fetchData(country);
+    this.setState({ data: fetchedData, country: country });
   }
 
   render() {
+    const { data, country } = this.state;
     return (
       <div className="container">
-        <Cards />
-        <Chart />
-        <CountryPicker />
+        <img src={coronaImage} alt="Corono Image" className="image" />
+        <Cards data={data} />
+        <CountryPicker handleCountryChange={this.handleCountryChange} />
+        <Chart data={data} country={country} />
       </div>
     );
   }
